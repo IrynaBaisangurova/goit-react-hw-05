@@ -1,26 +1,12 @@
-.containerList {
-  padding: 0 16px;
-}
-
-.filmsList {
+.list {
   display: flex;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 10px;
 }
-
-.filmItem {
-  transition: transform .3s;
+.link {
+  color: #a32304;
 }
-
-.filmItem:hover {
-  transform: scale(1.05);
-}
-
-@media screen and (min-width: 1440px) {
-  .filmsList {
-      gap: 40px;
-  }
+.link:active,
+.link:hover {
+  color: #0015cd;
 }

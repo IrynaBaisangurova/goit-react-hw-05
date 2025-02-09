@@ -1,22 +1,19 @@
-import css from './MovieList.module.css';
 import { Link, useLocation } from "react-router-dom";
-import MovieItem from "../MovieItem/MovieItem";
+import s from "./MovieList.module.css";
 
-
-const MovieList = ({ filmsList }) => {
+const MovieList = ({ movies }) => {
   const location = useLocation();
+
   return (
-    <div className={css.containerList}>
-      <ul className={css.filmsList}>
-        {filmsList.map((film) => (
-          <li key={film.id} className={css.filmItem}>
-            <Link to={`/movies/${film.id}`} state={{ from: location }}>
-              <MovieItem dataFilm={film} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={s.list}>
+      {movies.map((item) => (
+        <li key={item.id} className={s.link}>
+          <Link to={`/movies/${item.id.toString()}`} state={{ from: location }}>
+            {item.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

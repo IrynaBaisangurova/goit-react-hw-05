@@ -1,47 +1,43 @@
-import css from './MovieCast.module.css';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getFilmsDetails } from "../../js/films-api";
-import MovieCastItem from "../MovieCastItem/MovieCastItem";
-import LoaderMoreInform from "../Loader/LoaderMoreInform";
-
+import { moviesCast } from "../../services/movies";
+import s from "./MovieCast.module.css";
 
 const MovieCast = () => {
-  const { id } = useParams();
-  const [credits, setCredits] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { movieId } = useParams();
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    const handelClick = async () => {
+    const fetchMovieCast = async () => {
       try {
-        setLoading(true);
-        setCredits([]);
-        const dataCredits = await getFilmsDetails(id, "/credits");
-        setCredits(dataCredits.cast);
+        const data = await moviesCast(movieId);
+        setCast(data);
       } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
+        console.error("Failed to fetch movie details", error);
       }
     };
+    fetchMovieCast();
+  }, [movieId]);
 
-    handelClick();
-  }, [id]);
+  if (!cast) return;
+
   return (
-    <section className={css.castSection}>
-      {loading && <LoaderMoreInform />}
-      {credits && (
-        <ul className={css.castList}>
-          {credits.map((cast) => (
-            <li className={css.castItem} key={cast.id}>
-              <MovieCastItem dataCast={cast} />
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
+    <div>
+      <ul className={s.list}>
+        {cast.map((item) => (
+          <li key={item.id} className={s.item}>
+            <img
+              className={s.img}
+              src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
+              alt={item.name}
+            />
+            <p className={s.title}>{item.name}</p>
+            <p className={s.title}>Character: {item.character}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 export default MovieCast;
-

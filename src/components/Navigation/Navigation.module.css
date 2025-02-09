@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #99857A;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #481e14;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition-property: color, background-color, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  transform: scale(0.9);
+  cursor: pointer;
+}
+
+.active {
+  composes: link;
+  color: #574236;
+  font-weight: bold;
+  text-decoration: underline;
+  transform: scale(1);
+  pointer-events: none;
+}
+
+.link:hover,
+.link:focus {
+  font-weight: bold;
+  color: #fbfbfb;
+}
+
+.icon {
+  margin-right: 4px;
+}

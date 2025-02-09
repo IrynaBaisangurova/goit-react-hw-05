@@ -1,14 +1,39 @@
-
-.castSection {
-  padding: 100px;
-}
-.castList {
+.list {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap:20px;
+  row-gap: 25px;
+  justify-content: space-between;
 }
 
-.castItem {
-  width: 200px;
+.item {
+  width: calc((100% - 35px) / 5);
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  max-width: 125px;
+  margin: 0 auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #481e14;
+  text-align: center;
 }
