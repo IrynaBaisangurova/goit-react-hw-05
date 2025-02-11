@@ -22,7 +22,7 @@ const MovieReviews = () => {
 
   return (
     <div className={s.box}>
-      {!reviews.length && <h3>We don't have any reviews for this movie</h3>}
+      {!reviews.length && <h3>We don&apos;t have any reviews for this movie</h3>}
       <ul>
         {reviews.map((item) => (
           <li key={item.id}>
